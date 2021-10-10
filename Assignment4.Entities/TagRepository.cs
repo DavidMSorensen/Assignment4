@@ -45,6 +45,18 @@ namespace Assignment4.Entities
             throw new NotImplementedException();
         }
 
+        public TagDTO Update(TagCreateDTO tag)
+        {
+            throw new NotImplementedException();
+
+        }
+
+        public TagDTO Delete(TagCreateDTO tag)
+        {
+            throw new NotImplementedException();
+        }
+        
+
     }
 
     

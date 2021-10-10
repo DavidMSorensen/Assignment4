@@ -12,5 +12,9 @@ namespace Assignment4.Core
 
         IReadOnlyCollection<TagDTO> Read();
         
+        TagDTO Update(TagCreateDTO tag);
+
+        TagDTO Delete(TagCreateDTO tag);
+        
     }
 }
