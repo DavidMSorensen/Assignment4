@@ -38,8 +38,8 @@ namespace Assignment4.Entities.Tests
             var created = _repo.Create(tag);
             var created2 = _repo.Create(tag2);
 
-            Assert.Equal(new TagDTO(0, "TagzzName"), created);
-            Assert.Equal(new TagDTO(0, "TagzzNamodeyo"), created2);
+            Assert.Equal(new TagDTO(2, "TagzzName"), created);
+            Assert.Equal(new TagDTO(3, "TagzzNamodeyo"), created2);
         }
 
         [Fact]
@@ -53,9 +53,9 @@ namespace Assignment4.Entities.Tests
         [Fact]
         public void Read_given_existing_id_returns_tag()
         {
-            var tag = _repo.Read(0);
+            var tag = _repo.Read(1);
 
-            Assert.Equal(new TagDTO(0, "Active"), tag);
+            Assert.Equal(new TagDTO(1, "Active"), tag);
         }
         
         public void Dispose()

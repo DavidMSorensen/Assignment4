@@ -14,7 +14,6 @@ namespace Assignment4.Entities
         [EmailAddress]
         [Required]
         [StringLength(100)]
-        [Key]
         public string Email { get; set; }
 
         public IEnumerable<Task> Tasks { get; set; }
