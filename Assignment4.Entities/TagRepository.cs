@@ -15,9 +15,9 @@ namespace Assignment4.Entities
             _context = context;
         }
 
-        public TagDTO Create(TagCreateDTO city)
+        public TagDTO Create(TagCreateDTO tag)
         {
-            var entity = new Tag { Name = city.Name };
+            var entity = new Tag { Name = tag.Name };
 
             _context.Tags.Add(entity);
 

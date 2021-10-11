@@ -14,7 +14,7 @@ namespace Assignment4.Entities
         [StringLength(100)]
         public string Title { get; set; }
 
-        public User AssignedTo { get; set; }
+        public int? AssignedTo { get; set; }
             
         public string Descrption { get; set; }
 

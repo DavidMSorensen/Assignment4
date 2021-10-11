@@ -1,6 +1,6 @@
 using System;
 using Assignment4.Core;
-//using Microsoft.Data.Sqlite;
+using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using Xunit;
 
@@ -22,7 +22,7 @@ namespace Assignment4.Entities.Tests
             builder.UseSqlite(connection);
             var context = new KanbanContext(builder.Options);
             context.Database.EnsureCreated();
-            context.Tags.Add(new Tag {Name = "Active"});
+            context.Tags.Add(new Tag { Name = "Active" });
             context.SaveChanges();
 
             _context = context;
@@ -33,10 +33,13 @@ namespace Assignment4.Entities.Tests
         public void Create_given_Tag_returns_tag_with_Id()
         {
             var tag = new TagCreateDTO("TagzzName");
+            var tag2 = new TagCreateDTO("TagzzNamodeyo");
 
             var created = _repo.Create(tag);
+            var created2 = _repo.Create(tag2);
 
-            Assert.Equal(new TagDTO(2, "TagzzName"), created);
+            Assert.Equal(new TagDTO(0, "TagzzName"), created);
+            Assert.Equal(new TagDTO(0, "TagzzNamodeyo"), created2);
         }
 
         [Fact]
@@ -50,9 +53,9 @@ namespace Assignment4.Entities.Tests
         [Fact]
         public void Read_given_existing_id_returns_tag()
         {
-            var tag = _repo.Read(1);
+            var tag = _repo.Read(0);
 
-            Assert.Equal(new TagDTO(1, "Active"), tag);
+            Assert.Equal(new TagDTO(0, "Active"), tag);
         }
         
         public void Dispose()
