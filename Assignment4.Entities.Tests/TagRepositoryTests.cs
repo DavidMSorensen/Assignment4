@@ -32,14 +32,16 @@ namespace Assignment4.Entities.Tests
         [Fact]
         public void Create_given_Tag_returns_tag_with_Id()
         {
-            var tag = new TagCreateDTO("TagzzName");
-            var tag2 = new TagCreateDTO("TagzzNamodeyo");
+            var tag = new TagCreateDTO {Name = "TagzzName"};
+            var tag2 = new TagCreateDTO {Name = "TagzzNamodeyo"};
 
             var created = _repo.Create(tag);
             var created2 = _repo.Create(tag2);
 
-            Assert.Equal(new TagDTO(2, "TagzzName"), created);
-            Assert.Equal(new TagDTO(3, "TagzzNamodeyo"), created2);
+            Assert.Equal(Response.Created, created.Response);
+            Assert.Equal(2, created.TagId);
+            Assert.Equal(Response.Created, created2.Response);
+            Assert.Equal(3, created2.TagId);
         }
 
         [Fact]
