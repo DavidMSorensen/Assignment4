@@ -55,8 +55,6 @@ namespace Assignment4.Entities
         {
             throw new NotImplementedException();
         }
-        
-
     }
 
     

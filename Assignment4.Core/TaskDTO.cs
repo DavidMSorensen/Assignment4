@@ -1,14 +1,9 @@
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Assignment4.Core
 {
-    public record TaskDTO
-    {
-        public int Id { get; init; }
-        public string Title { get; init; }
-        public string Description { get; init; }
-        public int? AssignedToId { get; init; }
-        public IReadOnlyCollection<string> Tags { get; init; }
-        public State State { get; init; }
-    }
+    public record TaskCreateDTO([Required, StringLength(50)] string Title, string Description, int? AssignedToId);
+
+    public record TaskDTO(int Id, [Required, StringLength(50)] string Title, string Description, int? AssignedToId, State state) : TaskCreateDTO(Title, Description, AssignedToId);
 }
