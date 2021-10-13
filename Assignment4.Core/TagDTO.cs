@@ -6,6 +6,7 @@ namespace Assignment4.Core
 
     public record TagCreateDTO
     {
+
         [Required]
         [StringLength(50)]
         public string Name { get; init; }

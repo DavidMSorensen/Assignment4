@@ -15,7 +15,7 @@ namespace Assignment4.Entities
             _context = context;
         }
 
-        public TagDTO Create(TagCreateDTO tag)
+        public (Response Response, int TagId) Create(TagCreateDTO tag)
         {
             var entity = new Tag { Name = tag.Name };
 
@@ -23,12 +23,14 @@ namespace Assignment4.Entities
 
             _context.SaveChanges();
 
-            return new TagDTO(entity.Id, entity.Name);
+            var _tag = new TagDTO(entity.Id, entity.Name);
+
+            return (Response.Created, _tag.Id);
         }
 
-        public void Dispose()
+        public IReadOnlyCollection<TagDTO> ReadAll()
         {
-
+            throw new NotImplementedException();
         }
 
         public TagDTO Read(int tagId)
@@ -40,18 +42,13 @@ namespace Assignment4.Entities
             return tags.FirstOrDefault();
         }
 
-        public IReadOnlyCollection<TagDTO> Read()
-        {
-            throw new NotImplementedException();
-        }
-
-        public TagDTO Update(TagCreateDTO tag)
+        public Response Update(TagUpdateDTO tag)
         {
             throw new NotImplementedException();
 
         }
 
-        public TagDTO Delete(TagCreateDTO tag)
+        public Response Delete(int tagId, bool force = false)
         {
             throw new NotImplementedException();
         }

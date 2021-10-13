@@ -14,9 +14,9 @@ namespace Assignment4.Entities
         [StringLength(100)]
         public string Title { get; set; }
 
-        public int? AssignedTo { get; set; }
+        public int? AssignedToId { get; set; }
             
-        public string Descrption { get; set; }
+        public string Description { get; set; }
 
         [Required]
         public State State { get; set; }

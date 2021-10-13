@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -18,11 +19,8 @@ namespace Assignment4.Entities
 
         }
 
-        public IReadOnlyCollection<TaskDTO> All(){
-            return null;
-        }
-
-        public int Create(TaskDTO task){
+        // Skal kigges på
+        public (Response Response, int TaskId) Create(TaskCreateDTO task){
             var cmdText = @"INSERT Task (Title, AssignedTo, Description, State, Tags)
                             VALUES (@Title, @AssignedTo, @Description, @State, @Tags);
                             SELECT SCOPE_IDENTITY()";
@@ -32,7 +30,7 @@ namespace Assignment4.Entities
             command.Parameters.AddWithValue("@Title", task.Title);
             command.Parameters.AddWithValue("@AssignedTo", task.AssignedToId);
             command.Parameters.AddWithValue("@Description", task.Description);
-            command.Parameters.AddWithValue("@State", task.State);
+            // command.Parameters.AddWithValue("@State", task.State);
             command.Parameters.AddWithValue("@Tags", task.Tags);
 
             OpenConnection();
@@ -41,25 +39,42 @@ namespace Assignment4.Entities
 
             CloseConnection();
 
-            return (int)id;
+            return (Response.Created, (int)id);
         }
 
-        public void Delete(int taskId){
-            
+        public IReadOnlyCollection<TaskDTO> ReadAll(){
+            throw new NotImplementedException();
         }
 
-        public TaskDetailsDTO FindById(int id){
-            return null;
+        public IReadOnlyCollection<TaskDTO> ReadAllRemoved(){
+            throw new NotImplementedException();
         }
 
-        public void Update(TaskDTO task){
-
+        public IReadOnlyCollection<TaskDTO> ReadAllByTag(string tag){
+            throw new NotImplementedException();
         }
 
-        public void Dispose(){
-            
+        public IReadOnlyCollection<TaskDTO> ReadAllByUser(int userId){
+            throw new NotImplementedException();
         }
 
+        public IReadOnlyCollection<TaskDTO> ReadAllByState(State state){
+            throw new NotImplementedException();
+        }
+
+        public TaskDetailsDTO Read(int taskId){
+            throw new NotImplementedException();
+        }
+
+        public Response Update(TaskUpdateDTO task){
+            throw new NotImplementedException();
+        }
+
+        public Response Delete(int taskId){
+            throw new NotImplementedException();
+        }
+
+        // Private methods
         private void OpenConnection()
         {
             if (_connection.State == ConnectionState.Closed)

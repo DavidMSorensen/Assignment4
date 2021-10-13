@@ -14,7 +14,7 @@ namespace Assignment4.Entities
             _context = context;
         }
 
-        public UserDTO Create(UserCreateDTO user)
+        public (Response Response, int UserId) Create(UserCreateDTO user)
         {
             var entity = new User { Name = user.Name };
 
@@ -22,12 +22,13 @@ namespace Assignment4.Entities
 
             _context.SaveChanges();
 
-            return new UserDTO(entity.Id, entity.Name, entity.Email);
+            var _user = new UserDTO(entity.Id, entity.Name, entity.Email);
+
+            return (Response.Created, _user.Id);
         }
 
-        public void Dispose()
-        {
-
+        public IReadOnlyCollection<UserDTO> ReadAll(){
+            throw new NotImplementedException();
         }
 
         public UserDTO Read(int userId)
@@ -44,14 +45,11 @@ namespace Assignment4.Entities
             throw new NotImplementedException();
         }
 
-        public UserDTO Update(UserCreateDTO user)
-        {
+        public Response Update(UserUpdateDTO user){
             throw new NotImplementedException();
-
         }
 
-        public UserDTO Delete(UserCreateDTO user)
-        {
+        public Response Delete(int userId, bool force = false){
             throw new NotImplementedException();
         }
     }
